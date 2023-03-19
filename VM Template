@@ -48,4 +48,11 @@ cloud-init clean
 
 Disable the Password for root
 This will disable the temporary password we set to login as root
-~passwd -dl root~
+passwd -dl root
+
+Clear Shell History
+At this point we’re just polishing things up a bit. If you’re releasing a public template you may want to do an even more in-depth cleanup.
+
+truncate -s0 ~/.bash_history
+history -c
+shutdown -h now
