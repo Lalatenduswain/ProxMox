@@ -22,8 +22,15 @@ cat /etc/machine-id
 echo "" > /etc/machine-id
 cat /etc/machine-id
 
+Or
+
+truncate -s0 /etc/machine-id
+rm /var/lib/dbus/machine-id
+ln -s /etc/machine-id /var/lib/dbus/machine-id
+
 cd /etc/ssh/
 rm -rf ssh_host_*
+rm /etc/netplan/50-cloud-init.yaml
 
 rm -rf /root/anaconda-ks.cfg # CentOS
 unset HISTFILE
@@ -36,3 +43,9 @@ cat /dev/null > /var/log/wtmp
 #watch "dmesg | tail -10"
 dmesg -c
 sudo apt-get clean all
+cloud-init clean
+
+
+Disable the Password for root
+This will disable the temporary password we set to login as root
+~passwd -dl root~
