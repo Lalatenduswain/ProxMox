@@ -1,4 +1,4 @@
-Update hostname
+#Update Host Name
 Clear machine-id; Deletion is problematic next boot
 Delete SSH host keys
 Replace ifcfg-eth0 PREFIX with NETMASK
