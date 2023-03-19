@@ -1,0 +1,15 @@
+Update hostname
+Clear machine-id; Deletion is problematic next boot
+Delete SSH host keys
+Replace ifcfg-eth0 PREFIX with NETMASK
+Edit Network config to remove unnecessary values including
+HWADD
+Delete logs
+Install ovirt-guest-agent-common
+Complete any additional desired configurations or
+installations.
+(Install cloud-init; optional)
+sys-unconfig (clears host specific information then
+poweroff)
+Convert virtual machine to template
+Deploy virtual machine using template
