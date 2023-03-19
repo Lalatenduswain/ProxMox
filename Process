@@ -15,6 +15,24 @@ Convert virtual machine to template
 Deploy virtual machine using template
 
 
+apt update && apt -y upgrade && apt -y autoremove && apt clean
+hostnamectl set-hostname localhost.localdomain --static
+cat /etc/machine-id
 
-hostnamectl set-hostname localhost. .localdomain --static
+echo "" > /etc/machine-id
+cat /etc/machine-id
 
+cd /etc/ssh/
+rm -rf ssh_host_*
+
+rm -rf /root/anaconda-ks.cfg # CentOS
+unset HISTFILE
+truncate -s 0 /var/log/*log
+
+shopt -s globstar                  # if needed
+truncate -s 0 /var/log/*.log       # first-level logs
+truncate -s 0 /var/log/**/*.log    # nested folders, like /var/log/nginx/access.log
+cat /dev/null > /var/log/wtmp
+#watch "dmesg | tail -10"
+dmesg -c
+sudo apt-get clean all
